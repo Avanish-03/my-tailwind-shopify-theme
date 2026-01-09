@@ -1,0 +1,81 @@
+<header
+  class="site-header"
+  style="
+    background-color: {{ settings.bg_color }};
+    padding: {{ settings.padding }}px 0;
+  "
+>
+  <div class="header-inner">
+    <div class="logo">
+      {% if settings.logo != blank %}
+        <img
+          src="{{ settings.logo | image_url }}"
+          style="max-width: {{ settings.logo_width }}px;"
+          alt="{{ shop.name }}"
+          width=""
+          height=""
+        >
+      {% else %}
+        <span>{{ shop.name }}</span>
+      {% endif %}
+    </div>
+
+    <nav class="navigation">
+      <ul>
+        {% for link in linklists['main-menu'].links %}
+          <li>
+            <a 
+              href="{{ link.url }}"
+              style="color : {{ settings.text_color }};"
+            >{{ link.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Menu text color",
+      "default": "#111111"
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "label": "Header padding",
+      "min": 10,
+      "max": 40,
+      "step": 2,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "Logo width",
+      "min": 80,
+      "max": 250,
+      "step": 10,
+      "default": 150,
+      "unit": "px"
+    }
+  ]
+}
+{% endschema %}

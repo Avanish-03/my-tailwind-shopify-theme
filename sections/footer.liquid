@@ -1,0 +1,54 @@
+<footer 
+  class="site-footer"
+  style="background-color: {{ settings.bg_color }}; color: {{ settings.text_color }};"
+>
+  <div class="footer-inner">
+
+    <div class="footer-left">
+      <p>{{ shop.name }} {{ settings.footer_text }}</p>
+    </div>
+
+    <nav class="footer-nav">
+      <ul>
+        {% for link in linklists['footer-menu'].links %}
+          <li>
+            <a 
+              href="{{ link.url }}" 
+              style="color: {{ settings.text_color }};"
+            >
+              {{ link.title }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+  </div>
+</footer>
+
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "footer_text",
+      "label": "Footer text",
+      "default": "© 2026."
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    }
+  ]
+}
+{% endschema %}
