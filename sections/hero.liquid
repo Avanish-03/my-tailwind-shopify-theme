@@ -1,0 +1,140 @@
+<section
+  class="hero"
+  style="
+    background-color: {{ section.settings.bg_color }};
+    padding: {{ section.settings.padding }}px 0;
+    text-align: center;
+  "
+>
+  <div class="container">
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'heading' %}
+          <h1
+            style="color: {{ block.settings.text_color }};"
+            {{ block.shopify_attributes }}
+          >
+            {{ block.settings.text }}
+          </h1>
+
+        {% when 'text' %}
+          <p
+            style="color: {{ block.settings.text_color }};"
+            {{ block.shopify_attributes }}
+          >
+            {{ block.settings.text }}
+          </p>
+
+        {% when 'button' %}
+          <a
+            href="{{ block.settings.link }}"
+            class="hero-btn"
+            style="
+              background-color: {{ block.settings.bg_color }};
+              color: {{ block.settings.text_color }};
+            "
+            {{ block.shopify_attributes }}
+          >
+            {{ block.settings.label }}
+          </a>
+      {% endcase %}
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "label": "Section padding",
+      "min": 40,
+      "max": 120,
+      "step": 10,
+      "default": 80,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Heading text",
+          "default": "Welcome to our store"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color",
+          "default": "#111111"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text content",
+          "default": "Describe your brand here."
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color",
+          "default": "#555555"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Button label",
+          "default": "Shop now"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Button link"
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Button background",
+          "default": "#111111"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Button text color",
+          "default": "#ffffff"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero section",
+      "blocks": [{ "type": "heading" }, { "type": "text" }, { "type": "button" }]
+    }
+  ]
+}
+{% endschema %}

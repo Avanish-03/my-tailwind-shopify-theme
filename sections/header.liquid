@@ -6,32 +6,38 @@
   "
 >
   <div class="header-inner">
+
     <div class="logo">
       {% if settings.logo != blank %}
         <img
           src="{{ settings.logo | image_url }}"
           style="max-width: {{ settings.logo_width }}px;"
           alt="{{ shop.name }}"
-          width=""
           height=""
+          width=""
         >
       {% else %}
         <span>{{ shop.name }}</span>
       {% endif %}
     </div>
 
-    <nav class="navigation">
-      <ul>
-        {% for link in linklists['main-menu'].links %}
-          <li>
-            <a 
-              href="{{ link.url }}"
-              style="color : {{ settings.text_color }};"
-            >{{ link.title }}</a>
-          </li>
-        {% endfor %}
-      </ul>
-    </nav>
+    {% if linklists['main-menu'] != blank %}
+      <nav class="navigation">
+        <ul>
+          {% for link in linklists['main-menu'].links %}
+            <li>
+              <a
+                href="{{ link.url }}"
+                style="color: {{ settings.text_color }};"
+              >
+                {{ link.title }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    {% endif %}
+
   </div>
 </header>
 

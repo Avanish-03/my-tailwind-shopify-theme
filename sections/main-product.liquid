@@ -1,0 +1,40 @@
+<section class="product">
+  <div class="container">
+
+    <div class="product-grid">
+
+      <div class="product-media">
+        {% if product.featured_image %}
+          <img
+            src="{{ product.featured_image | image_url: width: 600 }}"
+            alt="{{ product.title }}"
+            height=""
+            width=""
+          >
+        {% endif %}
+      </div>
+
+      <div class="product-info">
+        <h1>{{ product.title }}</h1>
+
+        <p class="price">
+          {{ product.price | money }}
+        </p>
+
+        <div class="description">
+          {{ product.description }}
+        </div>
+
+        <form method="post" action="/cart/add">
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+          <button type="submit">
+            Add to cart
+          </button>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,8 @@
+{
+    "sections" : {
+        "header" :{ "type" : "header"},
+        "main" :{ "type" : "main-collection"},
+        "footer" :{ "type" : "footer"},
+    },
+    "order" : [ "header", "main", "footer"]
+}

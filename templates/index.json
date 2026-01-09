@@ -3,6 +3,9 @@
     "header": {
       "type": "header"
     },
+    "hero": {
+      "type": "hero"
+    },
     "main": {
       "type": "main-index"
     },
@@ -10,5 +13,5 @@
       "type": "footer"
     }
   },
-  "order": ["header", "main", "footer"]
+  "order": ["header", "hero", "main", "footer"]
 }

@@ -1,0 +1,30 @@
+<section class="collection">
+  <div class="container">
+    <h1>{{ collection.title }}</h1>
+
+    {% if collection.products.size > 0 %}
+      <div class="collection-grid">
+        {% for product in collection.products %}
+          <div class="collection-item">
+            <a href="{{ product.url }}">
+              {% if product.featured_image %}
+                <img
+                  src="{{ product.featured_image | image_url: width: 400 }}"
+                  alt="{{ product.title }}"
+                  height=""
+                  width=""
+                >
+              {% endif %}
+              <div class="collection-content">
+                <h3>{{ product.title }}</h3>
+                <p>{{ product.price | money }}</p>
+              </div>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p>No products found.</p>
+    {% endif %}
+  </div>
+</section>
