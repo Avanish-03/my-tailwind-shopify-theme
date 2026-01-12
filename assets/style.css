@@ -1,8 +1,9 @@
 /* header */
-*{
+* {
     margin: 0;
     padding: 0;
 }
+
 .site-header {
     border-bottom: 1px solid #eee;
     background: #fff;
@@ -18,7 +19,7 @@
 
 .logo {
     display: flex;
-
+    color: white;
 }
 
 .logo span {
@@ -47,8 +48,8 @@
 
 /* hero */
 .hero-image {
-  max-width: 100%;
-  margin-bottom: 30px;
+    max-width: 100%;
+    margin-bottom: 30px;
 }
 
 .hero h1 {
