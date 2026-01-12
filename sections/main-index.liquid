@@ -1,3 +1,66 @@
-<section class="">
-  <h2 class="">Main Contents</h2>
+<section class="home-main">
+  <div class="container">
+
+    <h2 class="section-title">
+      {{ section.settings.heading }}
+    </h2>
+
+    {% if section.settings.collection != blank %}
+      <div class="product-grid">
+
+        {% for product in section.settings.collection.products limit: section.settings.products_limit %}
+          <div class="product-card">
+
+            <a href="{{ product.url }}">
+              {% if product.featured_image %}
+                <img
+                  src="{{ product.featured_image | image_url: width: 400 }}"
+                  alt="{{ product.title }}"
+                  height=""
+                  width=""
+                >
+              {% endif %}
+
+              <h3>{{ product.title }}</h3>
+              <p>{{ product.price | money }}</p>
+            </a>
+
+          </div>
+        {% endfor %}
+
+      </div>
+    {% else %}
+      <p>Select a collection to show products.</p>
+    {% endif %}
+
+  </div>
 </section>
+
+
+{% schema %}
+{
+  "name": "Main content",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section heading",
+      "default": "Featured products"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Select collection"
+    },
+    {
+      "type": "range",
+      "id": "products_limit",
+      "label": "Number of products",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 4
+    }
+  ]
+}
+{% endschema %}

@@ -38,19 +38,15 @@
 
 .navigation a {
     text-decoration: none;
-    color: #111;
+    color: #999898;
     font-weight: 500;
 }
 
 .navigation a:hover {
-    color: #555;
+    color: #fffefe;
 }
 
 /* hero */
-.hero-image {
-    max-width: 100%;
-    margin-bottom: 30px;
-}
 
 .hero h1 {
     font-size: 48px;
@@ -68,6 +64,37 @@
     text-decoration: none;
     border-radius: 4px;
 }
+
+/* Main */
+.home-main {
+  padding: 60px 0;
+}
+
+.section-title {
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.product-card img {
+  width: 100%;
+}
+
+.product-card h3 {
+  font-size: 16px;
+  margin: 10px 0 4px;
+}
+
+.product-card a {
+  text-decoration: none;
+  color: #111;
+}
+
 
 /* Product */
 
