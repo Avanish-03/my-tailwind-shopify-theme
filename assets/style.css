@@ -1,4 +1,8 @@
 /* header */
+*{
+    margin: 0;
+    padding: 0;
+}
 .site-header {
     border-bottom: 1px solid #eee;
     background: #fff;
@@ -42,6 +46,11 @@
 }
 
 /* hero */
+.hero-image {
+  max-width: 100%;
+  margin-bottom: 30px;
+}
+
 .hero h1 {
     font-size: 48px;
     margin-bottom: 16px;
@@ -100,7 +109,6 @@
 }
 
 .collection-item {
-    /* border: 1px solid black; */
     border-radius: 20px;
     box-shadow: 1px 1px #959494;
     width: 300px;

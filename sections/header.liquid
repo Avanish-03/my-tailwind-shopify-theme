@@ -1,7 +1,7 @@
 <header
   class="site-header"
   style="
-    background-color: {{ settings.bg_color }};
+    background-color: {{ section.settings.bg_color }};
     padding: {{ settings.padding }}px 0;
   "
 >
@@ -12,12 +12,12 @@
         <img
           src="{{ settings.logo | image_url }}"
           style="max-width: {{ settings.logo_width }}px;"
-          alt="{{ shop.name }}"
+          alt="{{ settings.brand_name }}"
           height=""
           width=""
         >
       {% else %}
-        <span>{{ shop.name }}</span>
+        <span>{{ settings.brand_name }}</span>
       {% endif %}
     </div>
 
@@ -54,7 +54,7 @@
       "type": "color",
       "id": "bg_color",
       "label": "Background color",
-      "default": "#ffffff"
+      "default": "#050505"
     },
     {
       "type": "color",

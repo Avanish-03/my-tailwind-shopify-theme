@@ -1,17 +1,35 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "header": {
-      "type": "header"
+      "type": "header",
+      "settings": {}
     },
     "hero": {
-      "type": "hero"
+      "type": "hero",
+      "settings": {}
     },
     "main": {
-      "type": "main-index"
+      "type": "main-index",
+      "settings": {}
     },
     "footer": {
-      "type": "footer"
+      "type": "footer",
+      "settings": {}
     }
   },
-  "order": ["header", "hero", "main", "footer"]
+  "order": [
+    "header",
+    "hero",
+    "main",
+    "footer"
+  ]
 }

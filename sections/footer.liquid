@@ -1,11 +1,11 @@
 <footer 
   class="site-footer"
-  style="background-color: {{ settings.bg_color }}; color: {{ settings.text_color }};"
+  style="background-color: {{ section.settings.bg_color }}; color: {{ section.settings.text_color }};"
 >
   <div class="footer-inner">
 
     <div class="footer-left">
-      <p>{{ shop.name }} {{ settings.footer_text }} </p>
+      <p>{{ section.settings.footer_text }} </p>
     </div>
 
     <nav class="footer-nav">
@@ -14,7 +14,7 @@
           <li>
             <a 
               href="{{ link.url }}" 
-              style="color: {{ settings.text_color }};"
+              style="color: {{ section.settings.text_color }};"
             >
               {{ link.title }}
             </a>
@@ -35,7 +35,7 @@
       "type": "text",
       "id": "footer_text",
       "label": "Footer text",
-      "default": "© 2026."
+      "default": "© 2026 All copyrights reserve."
     },
     {
       "type": "color",

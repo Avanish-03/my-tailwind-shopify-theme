@@ -7,6 +7,15 @@
   "
 >
   <div class="container">
+    {% if section.settings.hero_image != blank %}
+      <img 
+      src="{{ section.settings.hero_image | image_url : width: 1200 }}"
+      alt="Hero Image"
+      class="hero-image"
+      height=""
+      width=""
+      >
+    {% endif %}
     {% for block in section.blocks %}
       {% case block.type %}
         {% when 'heading' %}
@@ -61,6 +70,11 @@
       "step": 10,
       "default": 80,
       "unit": "px"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Image"
     }
   ],
   "blocks": [
