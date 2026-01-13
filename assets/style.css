@@ -3,19 +3,25 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: cursive;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
 }
 
 img {
     width: 80%;
     height: 600px;
-    
+
 }
 
 /* HEADER */
 .site-header {
-    border-bottom: 1px solid #eee;
+    box-shadow: 1px 1px 10px #eee;
     background: #111;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 .header-inner {
@@ -57,7 +63,7 @@ img {
 }
 
 .hero h1 {
-    font-size: 48px;
+    font-size: 56px;
     margin-bottom: 16px;
 }
 
@@ -122,10 +128,13 @@ img {
     grid-template-columns: 1fr 1fr;
     gap: 40px;
     align-items: center;
+    padding: 0px 100px;
 }
 
 .product img {
     width: 100%;
+    height: auto;
+    padding: 50px;
 }
 
 .product h1 {
