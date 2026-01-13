@@ -27,8 +27,8 @@
         "hero_image": "shopify://shop_images/hero-section-on-home-page-how-to-do-it.png"
       }
     },
-    "main": {
-      "type": "main-index",
+    "featured-product": {
+      "type": "featured-product",
       "settings": {}
     },
     "footer": {
@@ -43,7 +43,7 @@
   "order": [
     "header",
     "hero",
-    "main",
+    "featured-product",
     "footer"
   ]
 }

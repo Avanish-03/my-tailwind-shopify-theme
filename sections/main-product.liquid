@@ -6,6 +6,7 @@
       <div class="product-media">
         {% if product.featured_image %}
           <img
+            class="product-img"
             src="{{ product.featured_image | image_url: width: 600 }}"
             alt="{{ product.title }}"
             height=""
@@ -28,7 +29,7 @@
         <form method="post" action="/cart/add">
           <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
 
-          <button type="submit">
+          <button type="submit" class="product-cart">
             Add to cart
           </button>
         </form>
