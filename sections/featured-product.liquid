@@ -1,38 +1,47 @@
-<section class="featured-products">
+<section class="featured-products py-20">
   <div class="container">
-
-    <h2 class="featured-title">
+    <h2 class="featured-title text-center text-3xl font-medium">
       {{ section.settings.heading }}
     </h2>
 
-    <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-8">
+    <p class="py-5 text-center text-sm">There are many variations of passages of lorem Ipsum available</p>
 
+    <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-8 py-5 px-20">
       {% for product in collections.all.products limit: section.settings.products_limit %}
         <div class="product-card">
-
           <a class="featured-products-a" href="{{ product.url }}">
             {% if product.featured_image %}
-              <img
-                class="featured-product-image"
-                src="{{ product.featured_image | image_url: width: 400 }}"
-                alt="{{ product.title }}"
-                height=""
-                width=""
-              >
+              <div class="relative overflow-hidden group">
+                {% comment %} default image {% endcomment %}
+                <img
+                  src="{{ product.featured_image | image_url: width: 400 }}"
+                  alt="{{ product.title }}"
+                  class="w-full transition-opacity duration-500 group-hover:opacity-0"
+                  height=""
+                  width=""
+                >
+                {% comment %} hover image {% endcomment %}
+                {% if product.images.size > 1 %}
+                  <img
+                    src="{{ product.images[1] | image_url: width: 400 }}"
+                    alt="{{ product.title }}"
+                    class="absolute inset-0 w-full opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                    height=""
+                    width=""
+                  >
+                {% endif %}
+              </div>
             {% endif %}
 
-            <h3>{{ product.title }}</h3>
-            <p>{{ product.price | money }}</p>
+            <h3 class="text-center text-sm text-gray-500 tracking-widest py-2">{{ product.vendor }}</h3>
+            <h3 class="text-center text-sm px-5">{{ product.title }}</h3>
+            <p class="text-center text-[#ce8464] font-medium">{{ product.price | money }}</p>
           </a>
-
         </div>
       {% endfor %}
-
     </div>
-
   </div>
 </section>
-
 
 {% schema %}
 {

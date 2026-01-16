@@ -11,25 +11,21 @@
   "sections": {
     "header": {
       "type": "header",
-      "settings": {
-        "bg_color": "#050505",
-        "text_color": "#111111",
-        "padding": 16,
-        "logo_width": 150
-      }
+      "settings": {}
     },
     "hero": {
       "type": "hero",
       "custom_css": [],
       "settings": {
-        "bg_color": "#f5f5f5",
-        "padding": 40,
-        "hero_image": "shopify://shop_images/hero-section-on-home-page-how-to-do-it.png"
+        "image": "shopify://shop_images/main-banner-2.jpg"
       }
     },
     "featured-product": {
       "type": "featured-product",
-      "settings": {}
+      "settings": {
+        "heading": "Featured products",
+        "products_limit": 4
+      }
     },
     "footer": {
       "type": "footer",

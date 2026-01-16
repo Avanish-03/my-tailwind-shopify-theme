@@ -1,93 +1,144 @@
-<header class="w-full bg-white fixed shadow-md">
-  <div class="m-20">
-    <div
-      class="flex items-center justify-between h-20 mx-20"
-      style="
-        margin-left: 50px;
-        margin-right: 50px;
-      "
-    >
-      <div class="text-2xl font-semibold tracking-widest">
-        {{ settings.brand_name }}
+<header class="">
+  {% comment %} <div class="py-3 bg-[#f5f0ed] transition-transform duration-300" data-topbar>
+    <div class="flex justify-between px-10">
+      <div>
+        <p class="text-sm">
+          Free shipping world wide for all orders over $199 <a class="underline font-medium" href=""> Shop Now </a>
+        </p>
       </div>
+      <div class="text-sm">
+        <a href="" class="px-4">Track Order</a>
+        <a href="" class="border-x border-gray-300 px-4">Help Center</a>
+        <a href="" class="px-4">English </a>
+      </div>
+    </div>
+  </div> {% endcomment %}
 
-      <nav class="hidden md:flex gap-8 text-sm uppercase tracking-wide">
-        {% for link in linklists['main-menu'].links %}
-          <a href="{{ link.url }}" class="hover:text-[#ce967e]">
-            {{ link.title }}
+  <div class="w-full bg-white fixed shadow-lg transition-all duration-300 top-0 z-30" data-navbar>
+    <div class="px-10">
+      <div
+        class="flex items-center justify-between h-20 "
+      >
+        <div class="text-4xl font-semibold">
+          {{ settings.brand_name }}
+        </div>
+
+        <nav class="hidden md:flex gap-8 text-sm uppercase tracking-wide">
+          {% for link in linklists['main-menu'].links %}
+            <a
+              href="{{ link.url }}"
+              class="
+                {% if link.active %}
+                  text-[#ce967e]
+                {% else %}
+                  hover:text-[#ce967e]
+                {% endif %}
+              "
+            >
+              {{ link.title }}
+            </a>
+          {% endfor %}
+        </nav>
+
+        <div class="flex gap-5 text-xl">
+          <a href="/search">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-search-icon lucide-search"
+            >
+              <path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/>
+            </svg>
           </a>
-        {% endfor %}
-      </nav>
-
-      <div class="flex gap-5 text-xl">
-        <a href="/search">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="lucide lucide-search-icon lucide-search"
-          >
-            <path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/>
-          </svg>
-        </a>
-        <a href="/account">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="lucide lucide-user-round-icon lucide-user-round"
-          >
-            <circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/>
-          </svg>
-        </a>
-        <a href="/wishlist">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="lucide lucide-heart-icon lucide-heart"
-          >
-            <path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"/>
-          </svg>
-        </a>
-        <a href="/cart">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="lucide lucide-shopping-cart-icon lucide-shopping-cart"
-          >
-            <circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
-          </svg>
-        </a>
+          <a href="/account">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-user-round-icon lucide-user-round"
+            >
+              <circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/>
+            </svg>
+          </a>
+          <a href="/wishlist">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-heart-icon lucide-heart"
+            >
+              <path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"/>
+            </svg>
+          </a>
+          <a href="/cart">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-shopping-cart-icon lucide-shopping-cart"
+            >
+              <circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   </div>
 </header>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const topbar = document.querySelector('[data-topbar]');
+    const navbar = document.querySelector('[data-navbar]');
+
+    if (!topbar || !navbar) return;
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 60) {
+        // hide top bar
+        topbar.classList.add('-translate-y-full');
+        topbar.classList.remove('translate-y-0');
+
+        // move navbar to top
+        navbar.classList.remove('top-[48px]');
+        navbar.classList.add('top-0');
+      } else {
+        // show top bar
+        topbar.classList.remove('-translate-y-full');
+        topbar.classList.add('translate-y-0');
+
+        // move navbar down
+        navbar.classList.remove('top-0');
+        navbar.classList.add('top-[48px]');
+      }
+    });
+  });
+</script>
 
 {% schema %}
 {

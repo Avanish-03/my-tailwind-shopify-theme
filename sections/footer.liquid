@@ -1,54 +1,213 @@
-<footer 
-  class="site-footer"
-  style="background-color: {{ section.settings.bg_color }}; color: {{ section.settings.text_color }};"
->
-  <div class="footer-inner">
+<footer class="bg-white pt-20">
+  <div class=" px-10">
+    <div class="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-1 gap-12">
+      <div class="w-72">
+        <h2 class="text-lg font-semibold mb-6">About Our Store</h2>
+        <p class="text-sm text-gray-600 leading-relaxed mb-6">
+          Welcome to our store, where we pride ourselves on providing exceptional products and unparalleled customer
+          service. Our store is a haven for those who appreciate quality, style, and innovation.
+        </p>
 
-    <div class="footer-left">
-      <p>{{ section.settings.footer_text }} </p>
-    </div>
+        <div class="flex gap-4">
+          <img src="" height="" width="" class="h-10">
+          <img src="" height="" width="" class="h-10">
+        </div>
+      </div>
 
-    <nav class="footer-nav">
-      <ul>
-        {% for link in linklists['footer-menu'].links %}
-          <li>
-            <a 
-              href="{{ link.url }}" 
-              style="color: {{ section.settings.text_color }};"
+      <div class="flex flex-col gap-3 text-sm text-gray-600">
+        <h2 class="text-lg font-semibold mb-3 text-black">Quick Links</h2>
+        <a href="">Contact Us</a>
+        <a href="">Shipping</a>
+        <a href="">Sitemap</a>
+        <a href="">FAQs</a>
+        <a href="">Size Chart</a>
+        <a href="">About Us</a>
+      </div>
+
+      <div class="flex flex-col gap-3 text-sm text-gray-600">
+        <h2 class="text-lg font-semibold mb-3 text-black">Services</h2>
+        <a href="">Privacy Policy</a>
+        <a href="">Refund Policy</a>
+        <a href="">Shipping Policy</a>
+        <a href="">Terms of Service</a>
+        <a href="">Policy for Buyers</a>
+        <a href="">Policy for Sellers</a>
+      </div>
+
+      <div class="flex flex-col gap-3 text-sm text-gray-600">
+        <h2 class="text-lg font-semibold mb-3 text-black">Your Account</h2>
+        <a href="/search">Search</a>
+        <a href="">Delivery Information</a>
+        <a href="">Locality</a>
+        <a href="">Order Tracking</a>
+        <a href="">Terms & Conditions</a>
+        <a href="">Shipping & Refund</a>
+      </div>
+
+      <div class="text-sm text-gray-600">
+        <h2 class="text-lg font-semibold mb-6 text-black">Contact Us</h2>
+
+        <div class="flex gap-3 mb-4">
+          <span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="text-[#ce967e] lucide lucide-map-pin-icon lucide-map-pin"
             >
-              {{ link.title }}
-            </a>
-          </li>
-        {% endfor %}
-      </ul>
-    </nav>
+              <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+          </span>
+          <p>
+            Jubilee – Jewellery Store <br>
+            507-Union Trade Ipsum Doler <br>
+            Centre France
+          </p>
+        </div>
 
+        <div class="flex gap-3 mb-4">
+          <span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="text-[#ce967e] lucide lucide-mail-icon lucide-mail"
+            >
+              <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/>
+            </svg>
+          </span>
+          <p>hello@blocks.com</p>
+        </div>
+
+        <div class="flex gap-3">
+          <span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="text-[#ce967e] lucide lucide-headset-icon lucide-headset"
+            >
+              <path d="M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5Zm0 0a9 9 0 1 1 18 0m0 0v5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3Z"/><path d="M21 16v2a4 4 0 0 1-4 4h-5"/>
+            </svg>
+          </span>
+          <p>(+91) 9876-543-210</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class=" mt-16">
+    <div class="max-w-7xl mx-auto px-10 py-6 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex gap-4 text-lg">
+        <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-[#ce967e] hover:text-white duration-500">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-facebook-icon lucide-facebook"
+          >
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+          </svg>
+        </a>
+        <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-[#ce967e] hover:text-white duration-500">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-instagram-icon lucide-instagram"
+          >
+            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+          </svg>
+        </a>
+        <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-[#ce967e] hover:text-white duration-500">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-youtube-icon lucide-youtube"
+          >
+            <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/>
+          </svg>
+        </a>
+        <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-[#ce967e] hover:text-white duration-500">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-twitter-icon lucide-twitter"
+          >
+            <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/>
+          </svg>
+        </a>
+      </div>
+
+      <p class="text-sm text-gray-500 text-center">© 2026, Jubilee – Jewellery Store Powered by Shopify</p>
+
+      <div class="flex gap-2">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" height="" width="" class="h-6 px-1">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
+          height=""
+          width=""
+          class="h-6 px-1"
+        >
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/3/30/American_Express_logo.svg"
+          height=""
+          width=""
+          class="h-6 px-1"
+        >
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" height="" width="" class="h-6 px-1">
+      </div>
+    </div>
   </div>
 </footer>
-
 
 {% schema %}
 {
   "name": "Footer",
-  "settings": [
-    {
-      "type": "text",
-      "id": "footer_text",
-      "label": "Footer text",
-      "default": "© 2026 All copyrights reserve."
-    },
-    {
-      "type": "color",
-      "id": "bg_color",
-      "label": "Background color",
-      "default": "#111111"
-    },
-    {
-      "type": "color",
-      "id": "text_color",
-      "label": "Text color",
-      "default": "#ffffff"
-    }
-  ]
+  "settings": []
 }
 {% endschema %}

@@ -3,14 +3,15 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>{{ settings.brand_name }}</title>
+
     {{ content_for_header }}
     <script src="{{ 'tailwind.js' | asset_url }}" defer></script>
-    {{ 'style.css' | asset_url | stylesheet_tag }}
   </head>
 
-  <body>
+ 
+  <body style=" font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana,
+  sans-serif;">
     {{ content_for_layout }}
   </body>
 </html>
