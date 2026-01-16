@@ -10,13 +10,12 @@
 img {
     width: 80%;
     height: 600px;
-
 }
 
 /* HEADER */
 .site-header {
     box-shadow: 1px 1px 10px #eee;
-    background: #111;
+    background: white;
     position: fixed;
     top: 0;
     left: 0;
@@ -32,11 +31,13 @@ img {
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
+    height: 90px;
+
 }
 
 .logo a {
-    color: white;
-    font-size: 20px;
+    color: #ce967e;
+    font-size: 30px;
     font-weight: bolder;
     text-decoration: none;
 }
@@ -49,11 +50,11 @@ img {
 
 .navigation a {
     text-decoration: none;
-    color: #ccc;
+    color: #000;
 }
 
 .navigation a:hover {
-    color: #fff;
+    color: #e3a388;
 }
 
 /* HERO */
