@@ -2,7 +2,6 @@
   class="hero"
   style="
     background-color: {{ section.settings.bg_color }};
-    padding: {{ section.settings.padding }}px 0;
     text-align: center;
   "
 >
@@ -60,16 +59,6 @@
       "id": "bg_color",
       "label": "Background color",
       "default": "#f5f5f5"
-    },
-    {
-      "type": "range",
-      "id": "padding",
-      "label": "Section padding",
-      "min": 40,
-      "max": 120,
-      "step": 10,
-      "default": 80,
-      "unit": "px"
     },
     {
       "type": "image_picker",
