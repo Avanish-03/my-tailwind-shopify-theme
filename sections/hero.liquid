@@ -1,52 +1,39 @@
-<section
-  class="hero"
-  style="
-    background-color: {{ section.settings.bg_color }};
-    text-align: center;
-  "
->
-  <div class="container">
-    {% if section.settings.hero_image != blank %}
-      <img 
-      src="{{ section.settings.hero_image | image_url : width: 1200 }}"
-      alt="Hero Image"
-      class="hero-image"
-      height=""
-      width=""
+<section class="w-full">
+  <div class="grid grid-cols-1 md:grid-cols-2 items-center">
+
+    <!-- TEXT -->
+    <div class="p-16">
+      <p class="text-sm uppercase tracking-widest mb-4">
+        This Week’s Highlights
+      </p>
+
+      <h1 class="text-5xl font-light leading-tight mb-6">
+        Woman In Golden Rings <br>
+        And Necklaces
+      </h1>
+
+      <p class="text-gray-600 mb-8">
+        Awesome products for the dynamic urban lifestyle
+      </p>
+
+      <a
+        href="/collections/all"
+        class="inline-block px-8 py-3 bg-black text-white text-sm uppercase tracking-wide"
       >
-    {% endif %}
-    {% for block in section.blocks %}
-      {% case block.type %}
-        {% when 'heading' %}
-          <h1
-            style="color: {{ block.settings.text_color }};"
-            {{ block.shopify_attributes }}
-          >
-            {{ block.settings.text }}
-          </h1>
+        Shop Now
+      </a>
+    </div>
 
-        {% when 'text' %}
-          <p
-            style="color: {{ block.settings.text_color }};"
-            {{ block.shopify_attributes }}
-          >
-            {{ block.settings.text }}
-          </p>
+    <!-- IMAGE -->
+    <div>
+      {% if section.settings.image != blank %}
+        <img
+          src="{{ section.settings.image | image_url: width: 1200 }}"
+          class="w-full h-full object-cover"
+        >
+      {% endif %}
+    </div>
 
-        {% when 'button' %}
-          <a
-            href="{{ block.settings.link }}"
-            class="hero-btn"
-            style="
-              background-color: {{ block.settings.bg_color }};
-              color: {{ block.settings.text_color }};
-            "
-            {{ block.shopify_attributes }}
-          >
-            {{ block.settings.label }}
-          </a>
-      {% endcase %}
-    {% endfor %}
   </div>
 </section>
 
@@ -55,88 +42,9 @@
   "name": "Hero",
   "settings": [
     {
-      "type": "color",
-      "id": "bg_color",
-      "label": "Background color",
-      "default": "#f5f5f5"
-    },
-    {
       "type": "image_picker",
-      "id": "hero_image",
+      "id": "image",
       "label": "Hero Image"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "heading",
-      "name": "Heading",
-      "settings": [
-        {
-          "type": "text",
-          "id": "text",
-          "label": "Heading text",
-          "default": "Welcome to our store"
-        },
-        {
-          "type": "color",
-          "id": "text_color",
-          "label": "Text color",
-          "default": "#111111"
-        }
-      ]
-    },
-    {
-      "type": "text",
-      "name": "Text",
-      "settings": [
-        {
-          "type": "textarea",
-          "id": "text",
-          "label": "Text content",
-          "default": "Describe your brand here."
-        },
-        {
-          "type": "color",
-          "id": "text_color",
-          "label": "Text color",
-          "default": "#555555"
-        }
-      ]
-    },
-    {
-      "type": "button",
-      "name": "Button",
-      "settings": [
-        {
-          "type": "text",
-          "id": "label",
-          "label": "Button label",
-          "default": "Shop now"
-        },
-        {
-          "type": "url",
-          "id": "link",
-          "label": "Button link"
-        },
-        {
-          "type": "color",
-          "id": "bg_color",
-          "label": "Button background",
-          "default": "#111111"
-        },
-        {
-          "type": "color",
-          "id": "text_color",
-          "label": "Button text color",
-          "default": "#ffffff"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Hero section",
-      "blocks": [{ "type": "heading" }, { "type": "text" }, { "type": "button" }]
     }
   ]
 }

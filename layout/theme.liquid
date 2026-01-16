@@ -6,6 +6,7 @@
 
     <title>{{ settings.brand_name }}</title>
     {{ content_for_header }}
+    <script src="{{ 'tailwind.js' | asset_url }}" defer></script>
     {{ 'style.css' | asset_url | stylesheet_tag }}
   </head>
 

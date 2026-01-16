@@ -1,74 +1,35 @@
-<header
-  class="site-header"
-  style="background-color: {{ settings.bg_color }};"
->
-  <div class="header-inner">
+<header class="w-full bg-white border-b">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex items-center justify-between h-20">
 
-    <div class="logo">
-      {% if settings.logo != blank %}
-        <img
-          src="{{ settings.logo | image_url }}"
-          style="max-width: {{ settings.logo_width }}px;"
-          alt="{{ settings.brand_name }}"
-          height=""
-          width=""
-        >
-      {% else %}
-        <a href="/">{{ settings.brand_name }}</a>
-      {% endif %}
-    </div>
+      <!-- LOGO -->
+      <div class="text-2xl font-semibold tracking-widest">
+        {{ settings.brand_name }}
+      </div>
 
-    {% if linklists['main-menu'] != blank %}
-      <nav class="navigation">
-        <ul>
-          {% for link in linklists['main-menu'].links %}
-            <li>
-              <a
-                href="{{ link.url }}"
-                style="color: {{ settings.text_color }};"
-              >
-                {{ link.title }}
-              </a>
-            </li>
-          {% endfor %}
-        </ul>
+      <!-- MENU -->
+      <nav class="hidden md:flex gap-8 text-sm uppercase tracking-wide">
+        {% for link in linklists.main-menu.links %}
+          <a href="{{ link.url }}" class="hover:text-gray-500">
+            {{ link.title }}
+          </a>
+        {% endfor %}
       </nav>
-    {% endif %}
 
+      <!-- ICONS -->
+      <div class="flex gap-5 text-xl">
+        <a href="/search">🔍</a>
+        <a href="/account">👤</a>
+        <a href="/cart">🛒</a>
+      </div>
+
+    </div>
   </div>
 </header>
 
 {% schema %}
 {
   "name": "Header",
-  "settings": [
-    {
-      "type": "image_picker",
-      "id": "logo",
-      "label": "Logo"
-    },
-    {
-      "type": "color",
-      "id": "bg_color",
-      "label": "Background color",
-      "default": "#050505"
-    },
-    {
-      "type": "color",
-      "id": "text_color",
-      "label": "Menu text color",
-      "default": "#ce967e"
-    },
-    {
-      "type": "range",
-      "id": "logo_width",
-      "label": "Logo width",
-      "min": 80,
-      "max": 250,
-      "step": 10,
-      "default": 150,
-      "unit": "px"
-    }
-  ]
+  "settings": []
 }
 {% endschema %}
