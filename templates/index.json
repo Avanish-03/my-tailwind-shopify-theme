@@ -24,6 +24,10 @@
       "type": "features-bar",
       "settings": {}
     },
+    "two-banner": {
+      "type": "two-banner",
+      "settings": {}
+    },
     "featured-product": {
       "type": "featured-product",
       "settings": {
@@ -40,6 +44,7 @@
     "header",
     "hero",
     "features-bar",
+    "two-banner",
     "featured-product",
     "footer"
   ]
