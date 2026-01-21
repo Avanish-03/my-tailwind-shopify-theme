@@ -22,6 +22,7 @@
     },
     "features-bar": {
       "type": "features-bar",
+      "settings": {}
     },
     "featured-product": {
       "type": "featured-product",
@@ -32,11 +33,7 @@
     },
     "footer": {
       "type": "footer",
-      "settings": {
-        "footer_text": "© 2026 All copyrights reserve.",
-        "bg_color": "#111111",
-        "text_color": "#ffffff"
-      }
+      "settings": {}
     }
   },
   "order": [
