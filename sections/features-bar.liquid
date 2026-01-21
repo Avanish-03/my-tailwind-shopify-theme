@@ -1,76 +1,97 @@
 <section class="px-30 bg-white py-5">
-  <div class="px-10 py-10">
+  <div class=" px-10 py-10">
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="flex items-start gap-4">
+        <!-- ICON IMAGE -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="size-12"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width=""
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-truck-electric-icon lucide-truck-electric"
+        >
+          <path d="M14 19V7a2 2 0 0 0-2-2H9"/><path d="M15 19H9"/><path d="M19 19h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62L18.3 9.38a1 1 0 0 0-.78-.38H14"/><path d="M2 13v5a1 1 0 0 0 1 1h2"/><path d="M4 3 2.15 5.15a.495.495 0 0 0 .35.86h2.15a.47.47 0 0 1 .35.86L3 9.02"/><circle cx="17" cy="19" r="2"/><circle cx="7" cy="19" r="2"/>
+        </svg>
 
-      {% for block in section.blocks %}
-        <div class="flex items-start gap-4">
-
-          <!-- ICON -->
-          {% if block.settings.icon != blank %}
-            <img
-              src="{{ block.settings.icon | image_url: width: 80 }}"
-              alt="{{ block.settings.title }}"
-              height=""
-              width=""
-              class="w-12 h-12 object-contain"
-            >
-          {% endif %}
-
-          <!-- TEXT -->
-          <div>
-            <h3 class="text-base font-normal mb-1">
-              {{ block.settings.title }}
-            </h3>
-            <p class="text-sm text-gray-500">
-              {{ block.settings.subtitle }}
-            </p>
-          </div>
-
+        <!-- TEXT -->
+        <div>
+          <h3 class="text-base font-normal mb-1">Worldwide Shipping</h3>
+          <p class="text-sm text-gray-500">For all Orders Over $100</p>
         </div>
-      {% endfor %}
+      </div>
 
+      <div class="flex items-start gap-4">
+        <!-- ICON IMAGE -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="size-12"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width=""
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-piggy-bank-icon lucide-piggy-bank"
+        >
+          <path d="M11 17h3v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-3a3.16 3.16 0 0 0 2-2h1a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1h-1a5 5 0 0 0-2-4V3a4 4 0 0 0-3.2 1.6l-.3.4H11a6 6 0 0 0-6 6v1a5 5 0 0 0 2 4v3a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1z"/><path d="M16 10h.01"/><path d="M2 8v1a2 2 0 0 0 2 2h1"/>
+        </svg>
+
+        <!-- TEXT -->
+        <div>
+          <h3 class="text-base font-normal mb-1">Money Back Guarentee</h3>
+          <p class="text-sm text-gray-500">Guarante With In 30 Days</p>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-4">
+        <!-- ICON IMAGE -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="size-12"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width=""
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-badge-percent-icon lucide-badge-percent"
+        >
+          <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m15 9-6 6"/><path d="M9 9h.01"/><path d="M15 15h.01"/>
+        </svg>
+
+        <!-- TEXT -->
+        <div>
+          <h3 class="text-base font-normal mb-1">Offers And Discounts</h3>
+          <p class="text-sm text-gray-500">Back Return In 7 Days</p>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-4">
+        <!-- ICON IMAGE -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="size-12"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width=""
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-headset-icon lucide-headset"
+        >
+          <path d="M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5Zm0 0a9 9 0 1 1 18 0m0 0v5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3Z"/><path d="M21 16v2a4 4 0 0 1-4 4h-5"/>
+        </svg>
+
+        <!-- TEXT -->
+        <div>
+          <h3 class="text-base font-normal mb-1">24/7 Support Services</h3>
+          <p class="text-sm text-gray-500">Contact us Anytime</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
-
-{% schema %}
-{
-  "name": "Features Bar",
-  "blocks": [
-    {
-      "type": "feature",
-      "name": "Feature Item",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "icon",
-          "label": "Icon Image"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Title",
-          "default": "Worldwide Shipping"
-        },
-        {
-          "type": "text",
-          "id": "subtitle",
-          "label": "Subtitle",
-          "default": "For all Orders Over $100"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Features Bar",
-      "blocks": [
-        { "type": "feature" },
-        { "type": "feature" },
-        { "type": "feature" },
-        { "type": "feature" }
-      ]
-    }
-  ]
-}
-{% endschema %}
