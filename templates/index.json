@@ -20,7 +20,7 @@
         "image": "shopify://shop_images/main-banner-2.jpg"
       }
     },
-    "features-bar": {
+    "features": {
       "type": "features-bar",
     },
     "featured-product": {
@@ -42,7 +42,7 @@
   "order": [
     "header",
     "hero",
-    "features-bar",
+    "features",
     "featured-product",
     "footer"
   ]
