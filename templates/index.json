@@ -26,7 +26,20 @@
     },
     "two-banner": {
       "type": "two-banner",
-      "settings": {}
+      "settings": {
+        "banner1_image": "shopify://shop_images/sub-banner-1.jpg",
+        "banner1_subtitle": "Diamond Ring",
+        "banner1_title": "Yellow Gold & Diamond Ring",
+        "banner1_link": "",
+        "banner2_image": "shopify://shop_images/sub-banner-3.jpg",
+        "banner2_subtitle": "Diamond Bracelets",
+        "banner2_title": "Infinity Diamond Bracelet",
+        "banner2_link": "",
+        "banner3_image": "shopify://shop_images/sub-banner-2.jpg",
+        "banner3_subtitle": "Diamond Pendant",
+        "banner3_title": "Teardrop Diamond Pendant",
+        "banner3_link": ""
+      }
     },
     "featured-product": {
       "type": "featured-product",
