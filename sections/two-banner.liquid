@@ -1,5 +1,5 @@
 <section class="my-12">
-  <div class=" mx-auto px-4">
+  <div class=" mx-auto px-16">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
       <!-- LEFT BIG BANNER -->
@@ -14,12 +14,12 @@
           width=""
         />
 
-        <div class="absolute inset-0 flex items-center">
+        <div class="absolute top-10 right-10 flex items-center">
           <div class="ml-10 max-w-md">
             <p class="text-xs uppercase tracking-widest mb-2">
               {{ section.settings.banner1_subtitle }}
             </p>
-            <h2 class="text-3xl font-semibold mb-4">
+            <h2 class="text-3xl text-wrap font-semibold mb-4 w-56">
               {{ section.settings.banner1_title }}
             </h2>
             <span class="underline text-sm">Shop Now</span>
@@ -27,10 +27,8 @@
         </div>
       </a>
 
-      <!-- RIGHT COLUMN -->
       <div class="grid grid-rows-2 gap-6">
 
-        <!-- BANNER 2 -->
         <a href="{{ section.settings.banner2_link }}"
            class="relative overflow-hidden group min-h-[240px]">
 
@@ -42,12 +40,12 @@
             width=""
           />
 
-          <div class="absolute inset-0 flex items-center">
+          <div class="absolute top-20 right-10 flex items-center">
             <div class="ml-8 max-w-sm">
               <p class="text-xs uppercase tracking-widest mb-2">
                 {{ section.settings.banner2_subtitle }}
               </p>
-              <h2 class="text-2xl font-semibold mb-3">
+              <h2 class="text-2xl font-semibold text-wrap w-56 mb-3">
                 {{ section.settings.banner2_title }}
               </h2>
               <span class="underline text-sm">Shop Now</span>
@@ -55,7 +53,6 @@
           </div>
         </a>
 
-        <!-- BANNER 3 -->
         <a href="{{ section.settings.banner3_link }}"
            class="relative overflow-hidden group min-h-[240px]">
 
@@ -72,7 +69,7 @@
               <p class="text-xs uppercase tracking-widest mb-2">
                 {{ section.settings.banner3_subtitle }}
               </p>
-              <h2 class="text-2xl font-semibold mb-3">
+              <h2 class="text-2xl font-semibold text-wrap w-60 mb-3">
                 {{ section.settings.banner3_title }}
               </h2>
               <span class="underline text-sm">Shop Now</span>
