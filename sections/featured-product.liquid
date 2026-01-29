@@ -1,18 +1,17 @@
-<section class="featured-products py-10">
+<section class="featured-products py-8">
   <div class="container">
     <h2 class="featured-title text-center text-3xl font-medium">
       {{ section.settings.heading }}
     </h2>
 
-    <p class="py-5 text-center text-sm">There are many variations of passages of lorem Ipsum available</p>
+    <p class="py-5 px-5 text-center text-sm">There are many variations of passages of lorem Ipsum available</p>
 
-    <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-8 py-5 px-20">
+    <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-8 py-5 md:px-20 px-5">
       {% for product in collections.all.products limit: section.settings.products_limit %}
         <div class="product-card">
           <a class="featured-products-a" href="{{ product.url }}">
             {% if product.featured_image %}
               <div class="relative overflow-hidden group">
-                {% comment %} default image {% endcomment %}
                 <img
                   src="{{ product.featured_image | image_url: width: 400 }}"
                   alt="{{ product.title }}"
@@ -20,7 +19,6 @@
                   height=""
                   width=""
                 >
-                {% comment %} hover image {% endcomment %}
                 {% if product.images.size > 1 %}
                   <img
                     src="{{ product.images[1] | image_url: width: 400 }}"

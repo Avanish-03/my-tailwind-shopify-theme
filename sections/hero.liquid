@@ -1,5 +1,5 @@
 <section
-  class="w-full min-h-[90vh] mt-20 flex items-center"
+  class="w-full md:min-h-[90vh] min-h-[30vh] mt-20 flex items-center"
   style="
     {% if section.settings.image != blank %}
       background-image: url({{ section.settings.image | image_url: width: 2000 }});
@@ -10,14 +10,14 @@
   "
 >
   <div class="w-full">
-    <div class="max-w-7xl px-16">
-      <p class="text-sm uppercase tracking-widest font-bold mb-4">Rubans 925 Sterling</p>
+    <div class="max-w-7xl md:px-16 px-5">
+      <p class="md:text-sm text-xs uppercase tracking-widest font-bold ">Rubans 925 Sterling</p>
 
-      <h1 class="text-5xl md:text-6xl font-light leading-tight text-black">
+      <h1 class="text-xl md:text-6xl font-light leading-tight text-black my-4">
         Rubans Modern Minimal <br> Ring Hoop Earrings
       </h1>
 
-      <p class="text-gray-600 py-8">Awesome products for the dynamic urban lifestyle</p>
+      <p class="text-gray-600 py-8 md:block hidden">Awesome products for the dynamic urban lifestyle</p>
 
       <a
         href="/collections/all"

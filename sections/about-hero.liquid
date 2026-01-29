@@ -1,0 +1,33 @@
+<section class="bg-[#f5f0ed] py-24">
+  <div class="max-w-7xl mx-auto px-10 text-center">
+
+    <h1 class="text-5xl font-light mb-6">
+      {{ section.settings.heading }}
+    </h1>
+
+    <p class="max-w-2xl mx-auto text-gray-600">
+      {{ section.settings.subheading }}
+    </p>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "About Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "About Our Store"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Sub Heading",
+      "default": "Crafting timeless jewellery with passion and precision."
+    }
+  ]
+}
+{% endschema %}

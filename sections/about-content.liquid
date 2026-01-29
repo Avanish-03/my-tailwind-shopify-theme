@@ -1,0 +1,52 @@
+<section class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-10 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+
+    <!-- IMAGE -->
+    {% if section.settings.image != blank %}
+      <img
+        src="{{ section.settings.image | image_url: width: 800 }}"
+        alt="About Image"
+        class="w-full object-cover"
+        height=""
+        width=""
+      >
+    {% endif %}
+
+    <!-- TEXT -->
+    <div>
+      <h2 class="text-3xl font-light mb-6">
+        {{ section.settings.title }}
+      </h2>
+
+      <div class="text-gray-600 leading-relaxed space-y-4">
+        {{ section.settings.content }}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "About Content",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Side Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Our Story"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content",
+      "default": "<p>We believe jewellery is more than an accessory — it’s a story.</p>"
+    }
+  ]
+}
+{% endschema %}
