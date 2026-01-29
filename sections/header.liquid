@@ -1,35 +1,41 @@
-<header class="">
-  {% comment %} <div class="py-3 bg-[#f5f0ed] transition-transform duration-300" data-topbar>
-    <div class="flex justify-between px-10">
-      <div>
-        <p class="text-sm">
-          Free shipping world wide for all orders over $199 <a class="underline font-medium" href=""> Shop Now </a>
-        </p>
-      </div>
-      <div class="text-sm">
-        <a href="" class="px-4">Track Order</a>
-        <a href="" class="border-x border-gray-300 px-4">Help Center</a>
-        <a href="" class="px-4">English </a>
-      </div>
-    </div>
-  </div> {% endcomment %}
+<header>
+  <!-- TOP BAR -->
+  <div class="w-full bg-white fixed shadow-lg top-0 z-30">
+    <div class="px-6 lg:px-10">
+      <div class="flex items-center justify-between h-20">
+        <!-- MOBILE TOGGLE -->
+        <button class="md:hidden" id="mobileToggle">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="26"
+            height="26"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
 
-  <div class="w-full bg-white fixed shadow-lg transition-all duration-300 top-0 z-30" data-navbar>
-    <div class="px-10">
-      <div
-        class="flex items-center justify-between h-20 "
-      >
-        <div class="text-4xl font-semibold">
+        <!-- LOGO -->
+        <div class="text-3xl font-semibold">
           {{ settings.brand_name }}
         </div>
 
-        <nav class="hidden md:flex gap-8 text-sm uppercase tracking-wide">
+        <!-- DESKTOP NAV -->
+        <nav class="hidden md:flex gap-8 text-sm uppercase">
           {% for link in linklists['main-menu'].links %}
             <a
               href="{{ link.url }}"
               class="
+                relative transition
                 {% if link.active %}
                   text-[#ce967e]
+                  after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-full after:bg-[#ce967e]
                 {% else %}
                   hover:text-[#ce967e]
                 {% endif %}
@@ -40,8 +46,8 @@
           {% endfor %}
         </nav>
 
-        <div class="flex gap-5 text-xl">
-          <a href="/search">
+        <div class="flex gap-4">
+          <button class="flex justify-center items-center gap-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -56,7 +62,8 @@
             >
               <path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/>
             </svg>
-          </a>
+            <input value="" class="outline-none border-b border-gray-300 p-2 rounded-md" placeholder="Serch..." />
+          </button>
           <a href="/account">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -89,54 +96,96 @@
               <path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"/>
             </svg>
           </a>
+          <!-- CART -->
           <a href="/cart">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
-              viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
               stroke-width="2"
               stroke-linecap="round"
               stroke-linejoin="round"
-              class="lucide lucide-shopping-cart-icon lucide-shopping-cart"
             >
-              <circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
+              <circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/>
+                <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
             </svg>
           </a>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- OVERLAY -->
+  <div
+    id="menuOverlay"
+    class="fixed inset-0 bg-black/40 opacity-0 pointer-events-none transition z-40"
+  ></div>
+
+  <!-- MOBILE SIDEBAR -->
+  <div
+    id="mobileMenu"
+    class="fixed top-0 left-0 h-full w-72 bg-white transform -translate-x-full transition duration-300 z-50 md:hidden"
+  >
+    <div class="p-6 space-y-6">
+      <!-- CLOSE -->
+      <button id="closeMenu" class="text-xl mb-4">✕</button>
+
+      <!-- MOBILE MENU -->
+      <nav class="flex flex-col gap-2 uppercase text-sm">
+        {% for link in linklists['main-menu'].links %}
+          <a
+            href="{{ link.url }}"
+            class="
+              relative flex items-center px-3 py-2 rounded transition mobile-link
+              {% if link.active %}
+                text-[#ce967e] bg-[#ce967e]/10
+                before:absolute before:left-0 before:top-0 before:h-full before:w-[3px] before:bg-[#ce967e]
+              {% else %}
+                hover:bg-gray-100 hover:text-[#ce967e]
+              {% endif %}
+            "
+          >
+            {{ link.title }}
+          </a>
+        {% endfor %}
+      </nav>
+
+      <!-- EXTRA LINKS -->
+      <div class="border-t pt-4 flex flex-col gap-2">
+        <a href="/account" class="px-3 py-2 rounded hover:bg-gray-100 hover:text-[#ce967e] transition"> Account </a>
+        <a href="/wishlist" class="px-3 py-2 rounded hover:bg-gray-100 hover:text-[#ce967e] transition"> Wishlist </a>
+      </div>
+    </div>
+  </div>
 </header>
 
+<!-- JS -->
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const topbar = document.querySelector('[data-topbar]');
-    const navbar = document.querySelector('[data-navbar]');
+    const toggle = document.getElementById('mobileToggle');
+    const menu = document.getElementById('mobileMenu');
+    const overlay = document.getElementById('menuOverlay');
+    const closeBtn = document.getElementById('closeMenu');
+    const links = document.querySelectorAll('.mobile-link');
 
-    if (!topbar || !navbar) return;
+    if (!toggle || !menu) return;
 
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 60) {
-        // hide top bar
-        topbar.classList.add('-translate-y-full');
-        topbar.classList.remove('translate-y-0');
+    const openMenu = () => {
+      menu.classList.remove('-translate-x-full');
+      overlay.classList.remove('opacity-0', 'pointer-events-none');
+    };
 
-        // move navbar to top
-        navbar.classList.remove('top-[48px]');
-        navbar.classList.add('top-0');
-      } else {
-        // show top bar
-        topbar.classList.remove('-translate-y-full');
-        topbar.classList.add('translate-y-0');
+    const closeMenu = () => {
+      menu.classList.add('-translate-x-full');
+      overlay.classList.add('opacity-0', 'pointer-events-none');
+    };
 
-        // move navbar down
-        navbar.classList.remove('top-0');
-        navbar.classList.add('top-[48px]');
-      }
-    });
+    toggle.onclick = openMenu;
+    closeBtn.onclick = closeMenu;
+    overlay.onclick = closeMenu;
+    links.forEach((l) => (l.onclick = closeMenu));
   });
 </script>
 

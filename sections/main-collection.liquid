@@ -1,134 +1,220 @@
 <section class="mt-20">
   <div class="text-center py-10">
-    {% if product.featured_image %}
+    {% if collection.image %}
       <img
-        src="{{ product.featured_image | image_url: width: 400 }}"
-        alt="{{ product.title }}"
+        src="{{ collection.image | image_url: width: 400 }}"
+        alt="{{ collection.title }}"
         class="mx-auto hover:scale-105 transition duration-300"
         height=""
         width=""
       >
     {% endif %}
-
     <h2 class="mt-4 text-2xl font-semibold">Products</h2>
   </div>
 
   <div class="collection px-6 lg:px-16 my-10 max-w-7xl mx-auto">
+
+    <!-- SORT -->
     <div class="flex justify-between items-center mb-10">
       <div></div>
-
       <div class="flex items-center gap-6 text-sm">
         <div>
           Sort by:
-          <select class="border-none bg-transparent font-medium">
-            <option>Best selling</option>
-            <option>Price: Low to High</option>
-            <option>Price: High to Low</option>
+          <select id="sortSelect" class="border-none bg-transparent font-medium">
+            <option value="default">Best selling</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
           </select>
         </div>
-        <div class="text-gray-600">{{ collection.products_count }} Products</div>
+        <div class="text-gray-600">
+          <span id="productCount">{{ collection.products_count }}</span> Products
+        </div>
       </div>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-10">
+
+      <!-- FILTERS -->
       <aside class="space-y-8 text-sm">
+
+        <!-- AVAILABILITY -->
         <div>
           <h3 class="font-semibold mb-3">Availability</h3>
-          <div class="space-y-2">
-            <label class="flex items-center gap-2">
-              <input type="checkbox" class="accent-black">
-              In stock (3)
-            </label>
-            <label class="flex items-center gap-2">
-              <input type="checkbox" class="accent-black">
-              Out of stock (1)
-            </label>
-          </div>
+          <label class="flex gap-2">
+            <input type="checkbox" class="filter-stock" value="in">
+            In stock
+          </label>
+          <label class="flex gap-2">
+            <input type="checkbox" class="filter-stock" value="out">
+            Out of stock
+          </label>
         </div>
 
+        <!-- PRICE -->
         <div>
           <h3 class="font-semibold mb-3">Price</h3>
-          <p class="text-gray-500 mb-3">
-            The highest price is {{ collection.products | map: 'price' | sort | last | money }}
-          </p>
           <div class="flex gap-3">
-            <input type="text" placeholder="$ From" class="border px-3 py-2 w-full">
-            <input type="text" placeholder="To" class="border px-3 py-2 w-full">
+            <input id="priceFrom" type="number" placeholder="From" class="border px-3 py-2 w-full">
+            <input id="priceTo" type="number" placeholder="To" class="border px-3 py-2 w-full">
           </div>
         </div>
 
+        <!-- COLOR -->
         <div>
           <h3 class="font-semibold mb-3">Color</h3>
           <div class="flex gap-3">
-            <span class="w-6 h-6 rounded-full bg-gray-300 border"></span>
-            <span class="w-6 h-6 rounded-full bg-orange-300 border"></span>
-            <span class="w-6 h-6 rounded-full bg-yellow-400 border"></span>
-          </div>
-        </div>
-
-        <div>
-          <h3 class="font-semibold mb-3">Carat</h3>
-          <div class="space-y-2">
-            <label class="flex items-center gap-2"> <input type="checkbox"> 18KT (1) </label>
-            <label class="flex items-center gap-2"> <input type="checkbox"> 22KT (1) </label>
-            <label class="flex items-center gap-2"> <input type="checkbox"> 24KT (1) </label>
-          </div>
-        </div>
-
-        <div>
-          <h3 class="font-semibold mb-3">Product type</h3>
-          <div class="space-y-2">
-            <label class="flex items-center gap-2"> <input type="checkbox"> Necklace (1) </label>
-            <label class="flex items-center gap-2"> <input type="checkbox"> Rings (2) </label>
-          </div>
-        </div>
-
-        <div>
-          <h3 class="font-semibold mb-3">Brand</h3>
-          <div class="space-y-2">
-            <label class="flex items-center gap-2"> <input type="checkbox"> Florida Diamond (1) </label>
-            <label class="flex items-center gap-2"> <input type="checkbox"> Gold Ring (2) </label>
-          </div>
-        </div>
-      </aside>
-
-      <div class="lg:col-span-3">
-        {% if collection.products.size > 0 %}
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            {% assign colors = '' %}
             {% for product in collection.products %}
-              <a href="{{ product.url }}" class="group text-center">
-                <div class="bg-gray-50 p-2 mb-4">
-                  {% if product.featured_image %}
-                    <img
-                      src="{{ product.featured_image | image_url: width: 400 }}"
-                      alt="{{ product.title }}"
-                      class="mx-auto group-hover:scale-105 transition duration-300"
-                      height=""
-                      width=""
-                    >
-                  {% endif %}
-                </div>
-
-                <p class="text-xs uppercase tracking-widest text-gray-500 mb-1">
-                  {{ product.vendor }}
-                </p>
-
-                <h3 class="text-sm font-medium mb-2">
-                  {{ product.title }}
-                </h3>
-
-                <div class="flex justify-center gap-1 mb-2 text-yellow-400 text-sm">★ ★ ★ ★ ★</div>
-
-                <p class="text-orange-500 font-semibold">
-                  {{ product.price | money }}
-                </p>
-              </a>
+              {% for option in product.options_with_values %}
+                {% if option.name == 'Color' %}
+                  {% for value in option.values %}
+                    {% unless colors contains value %}
+                      {% assign colors = colors | append: value | append: ',' %}
+                      <button
+                        type="button"
+                        class="w-6 h-6 rounded-full border filter-color"
+                        style="background: {{ value | downcase }}"
+                        data-color="{{ value }}"
+                      ></button>
+                    {% endunless %}
+                  {% endfor %}
+                {% endif %}
+              {% endfor %}
             {% endfor %}
           </div>
-        {% else %}
-          <p>No products found.</p>
-        {% endif %}
+        </div>
+
+        <!-- PRODUCT TYPE -->
+        <div>
+          <h3 class="font-semibold mb-3">Product type</h3>
+          {% for type in collection.all_types %}
+            <label class="flex gap-2">
+              <input type="checkbox" class="filter-type" value="{{ type }}">
+              {{ type }}
+            </label>
+          {% endfor %}
+        </div>
+
+        <!-- BRAND -->
+        <div>
+          <h3 class="font-semibold mb-3">Brand</h3>
+          {% for vendor in collection.all_vendors %}
+            <label class="flex gap-2">
+              <input type="checkbox" class="filter-vendor" value="{{ vendor }}">
+              {{ vendor }}
+            </label>
+          {% endfor %}
+        </div>
+
+      </aside>
+
+      <!-- PRODUCTS -->
+      <div class="lg:col-span-3">
+        <div id="productGrid" class="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+          {% for product in collection.products %}
+            <a
+              href="{{ product.url }}"
+              class="group text-center product-card"
+              data-price="{{ product.price }}"
+              data-stock="{{ product.available }}"
+              data-type="{{ product.type }}"
+              data-vendor="{{ product.vendor }}"
+              data-colors="{% for v in product.variants %}{{ v.options | join: ',' }}{% endfor %}"
+            >
+              <div class="bg-gray-50 p-2 mb-4">
+                <img
+                  src="{{ product.featured_image | image_url: width: 400 }}"
+                  class="mx-auto group-hover:scale-105 transition"
+                  height=""
+                  width=""
+                >
+              </div>
+
+              <p class="text-xs uppercase text-gray-500">{{ product.vendor }}</p>
+              <h3 class="text-sm font-medium mb-2">{{ product.title }}</h3>
+              <div class="text-yellow-400 text-sm mb-1">★ ★ ★ ★ ★</div>
+              <p class="text-orange-500 font-semibold">
+                {{ product.price | money }}
+              </p>
+            </a>
+          {% endfor %}
+
+        </div>
       </div>
+
     </div>
   </div>
 </section>
+
+<script>
+  const products = [...document.querySelectorAll(".product-card")];
+  const countEl = document.getElementById("productCount");
+
+  function applyFilters() {
+    let visible = 0;
+
+    const priceFrom = Number(priceFromInput.value || 0);
+    const priceTo = Number(priceToInput.value || Infinity);
+
+    const stock = [...document.querySelectorAll(".filter-stock:checked")].map(i => i.value);
+    const types = [...document.querySelectorAll(".filter-type:checked")].map(i => i.value);
+    const vendors = [...document.querySelectorAll(".filter-vendor:checked")].map(i => i.value);
+    const colors = selectedColors;
+
+    products.forEach(p => {
+      const price = Number(p.dataset.price);
+      const inStock = p.dataset.stock === "true";
+      const type = p.dataset.type;
+      const vendor = p.dataset.vendor;
+      const colorData = p.dataset.colors;
+
+      let show = true;
+
+      if (price < priceFrom || price > priceTo) show = false;
+      if (stock.length && !stock.includes(inStock ? "in" : "out")) show = false;
+      if (types.length && !types.includes(type)) show = false;
+      if (vendors.length && !vendors.includes(vendor)) show = false;
+      if (colors.length && !colors.some(c => colorData.includes(c))) show = false;
+
+      p.style.display = show ? "block" : "none";
+      if (show) visible++;
+    });
+
+    countEl.innerText = visible;
+  }
+
+  // PRICE
+  const priceFromInput = document.getElementById("priceFrom");
+  const priceToInput = document.getElementById("priceTo");
+  priceFromInput.oninput = priceToInput.oninput = applyFilters;
+
+  // CHECKBOX FILTERS
+  document.querySelectorAll("input[type='checkbox']").forEach(i => {
+    i.onchange = applyFilters;
+  });
+
+  // COLOR FILTER
+  let selectedColors = [];
+  document.querySelectorAll(".filter-color").forEach(btn => {
+    btn.onclick = () => {
+      btn.classList.toggle("ring-2");
+      const c = btn.dataset.color;
+      selectedColors.includes(c)
+        ? selectedColors = selectedColors.filter(x => x !== c)
+        : selectedColors.push(c);
+      applyFilters();
+    };
+  });
+
+  // SORT
+  document.getElementById("sortSelect").onchange = e => {
+    const grid = document.getElementById("productGrid");
+    const sorted = [...products].sort((a,b) => {
+      if (e.target.value === "price-asc") return a.dataset.price - b.dataset.price;
+      if (e.target.value === "price-desc") return b.dataset.price - a.dataset.price;
+      return 0;
+    });
+    sorted.forEach(p => grid.appendChild(p));
+  };
+</script>

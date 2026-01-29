@@ -1,41 +1,194 @@
-<section class="product">
-  <div class="container">
+<section class="mt-24 px-6 lg:px-16">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
 
-    <div class="product-grid">
-
-      <div class="product-media">
-        {% if product.featured_image %}
+    <div>
+      {% if product.featured_image %}
+        <div class="bg-gray-100 p-10">
           <img
-            class="product-img"
-            src="{{ product.featured_image | image_url: width: 600 }}"
+            id="main-product-image"
+            src="{{ product.featured_image | image_url: width: 700 }}"
             alt="{{ product.title }}"
+            class="mx-auto"
             height=""
             width=""
           >
-        {% endif %}
+        </div>
+      {% endif %}
+
+      <div class="flex items-center gap-4 mt-6">
+        {% for image in product.images %}
+          <img
+            src="{{ image | image_url: width: 120 }}"
+            alt="{{ product.title }}"
+            class="w-20 h-20 border cursor-pointer hover:border-orange-500 thumb-image"
+            data-image="{{ image | image_url: width: 700 }}"
+            height=""
+            width=""
+          >
+        {% endfor %}
+      </div>
+    </div>
+
+    <div>
+
+      <div class="flex items-center gap-1 text-yellow-400 mb-2 text-sm">
+        ★ ★ ★ ★ ★ <span class="text-gray-500 ml-2">(1)</span>
       </div>
 
-      <div class="product-info">
-        <h1>{{ product.title }}</h1>
+      <h1 class="text-3xl font-semibold mb-4">
+        {{ product.title }}
+      </h1>
 
-        <p class="price">
-          {{ product.price | money }}
+      <p class="text-2xl text-orange-500 font-semibold mb-4" id="product-price">
+        {{ product.price | money }}
+      </p>
+
+      <div class="text-gray-600 text-sm leading-relaxed mb-6">
+        {{ product.description }}
+      </div>
+
+      {% if product.available %}
+        <p class="flex items-center gap-2 text-sm mb-4">
+          <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+          <span id="stock-text">
+            {{ product.selected_or_first_available_variant.inventory_quantity }} in stock
+          </span>
         </p>
+      {% endif %}
 
-        <div class="description">
-          {{ product.description }}
+      {% assign color_index = 0 %}
+      {% for option in product.options %}
+        {% if option == 'Color' %}
+          {% assign color_index = forloop.index0 %}
+        {% endif %}
+      {% endfor %}
+
+      <div class="mb-6">
+        <p class="text-sm font-medium mb-2">Color</p>
+        <div class="flex gap-3">
+          {% for value in product.options_with_values[color_index].values %}
+            <button
+              type="button"
+              class="w-6 h-6 rounded-full border cursor-pointer color-btn"
+              style="background-color: {{ value | downcase }}"
+              data-color="{{ value }}"
+            ></button>
+          {% endfor %}
+        </div>
+      </div>
+
+      <form method="post" action="/cart/add" class="space-y-4">
+        <input
+          type="hidden"
+          name="id"
+          id="variant-id"
+          value="{{ product.selected_or_first_available_variant.id }}"
+        >
+
+        <div class="flex items-center gap-4">
+          <div class="flex border">
+            <button type="button" class="px-3 py-2 qty-minus">-</button>
+            <input
+              type="number"
+              name="quantity"
+              value="1"
+              min="1"
+              class="w-12 text-center qty-input"
+            >
+            <button type="button" class="px-3 py-2 qty-plus">+</button>
+          </div>
+
+          <button
+            type="submit"
+            class="bg-orange-400 hover:bg-orange-500 text-white px-8 py-3 uppercase text-sm font-medium"
+          >
+            Add to Cart
+          </button>
         </div>
 
-        <form method="post" action="/cart/add">
-          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        {{ form | payment_button }}
+      </form>
 
-          <button type="submit" class="product-cart">
-            Add to cart
-          </button>
-        </form>
+      <div class="text-sm text-gray-600 space-y-1 mt-6">
+        <p><strong>SKU:</strong> {{ product.selected_or_first_available_variant.sku }}</p>
+        <p><strong>Vendor:</strong> {{ product.vendor }}</p>
+        <p><strong>Category:</strong> {{ product.type }}</p>
+        <p><strong>Tags:</strong> {{ product.tags | join: ', ' }}</p>
+      </div>
+
+      <div class="mt-8 border-t divide-y text-sm">
+        <details class="py-4">
+          <summary class="cursor-pointer font-medium">Shipping & Returns</summary>
+          <p class="mt-2 text-gray-600">Free shipping & 7-day returns.</p>
+        </details>
+
+        <details class="py-4">
+          <summary class="cursor-pointer font-medium">Materials</summary>
+          <p class="mt-2 text-gray-600">18KT Gold, Certified Diamonds</p>
+        </details>
+
+        <details class="py-4">
+          <summary class="cursor-pointer font-medium">Size Chart</summary>
+          <p class="mt-2 text-gray-600">Refer to our size guide.</p>
+        </details>
+
+        <details class="py-4">
+          <summary class="cursor-pointer font-medium">Care Instructions</summary>
+          <p class="mt-2 text-gray-600">Avoid chemicals & clean with soft cloth.</p>
+        </details>
       </div>
 
     </div>
-
   </div>
 </section>
+
+<script>
+  const variants = {{ product.variants | json }};
+</script>
+
+<script>
+  const colorButtons = document.querySelectorAll(".color-btn");
+  const variantInput = document.getElementById("variant-id");
+  const priceEl = document.getElementById("product-price");
+  const stockEl = document.getElementById("stock-text");
+  const mainImage = document.getElementById("main-product-image");
+
+  colorButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const color = btn.dataset.color;
+
+      const variant = variants.find(v => v.options.includes(color));
+      if (!variant) return;
+
+      variantInput.value = variant.id;
+      priceEl.innerHTML = (variant.price / 100).toLocaleString('en-IN', {
+        style: 'currency',
+        currency: 'INR'
+      });
+
+      if (stockEl) {
+        stockEl.innerText = variant.inventory_quantity + " in stock";
+      }
+
+      if (variant.featured_image) {
+        mainImage.src = variant.featured_image.src;
+      }
+    });
+  });
+
+  document.querySelectorAll(".thumb-image").forEach(img => {
+    img.addEventListener("click", () => {
+      mainImage.src = img.dataset.image;
+    });
+  });
+
+  document.querySelector(".qty-plus").onclick = () => {
+    const input = document.querySelector(".qty-input");
+    input.value = Number(input.value) + 1;
+  };
+
+  document.querySelector(".qty-minus").onclick = () => {
+    const input = document.querySelector(".qty-input");
+    if (input.value > 1) input.value = Number(input.value) - 1;
+  };
+</script>
